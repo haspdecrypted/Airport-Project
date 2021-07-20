@@ -63,4 +63,8 @@ Then we need to create three tables for each data set we have in the below given
 -	List of Airlines operating with code share
 -	Which country (or) territory having highest Airports
 -	Find the list of Active Airlines in United States
+-	Find top 10 countries with highest number of airports.
+- Find the airport at the highest altitude.
+- Highest alt in india
+- Find number of airports both in east and west zone.
 
