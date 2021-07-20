@@ -9,7 +9,7 @@ Then we need to create three tables for each data set we have in the below given
 
 <h4> Airport Table </h4>
 
-|Schema   |Explanation   |
+|Columns   |Explanation   |
 | ------------ | ------------ |
 |Airport ID   | Unique OpenFlights identifier for this airport.  |
 | Name  |  Name of airport. May or may not contain the City name. |
@@ -27,7 +27,7 @@ Then we need to create three tables for each data set we have in the below given
 <br>
 <h4> Air lines Table </h4>
 
-| Schema  | Explanation   |
+| Columns  | Explanation   |
 | ------------ | ------------ |
 |  Airline | Unique OpenFlights identifier for this airline. ID   |
 | Name  | Name of the airline.  |
@@ -41,7 +41,7 @@ Then we need to create three tables for each data set we have in the below given
 <br>
 <h4> Routes Table </h4>
 
-| Schema  | Explanation  |
+| Columns  | Explanation  |
 | ------------ | ------------ |
 | Airline  |  2-letter (IATA) or 3-letter (ICAO) code of the airline.  |
 | Airline ID  | Unique OpenFlights identifier for airline (see Airline).  |
