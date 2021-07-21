@@ -58,6 +58,7 @@ Then we need to create three tables for each data set we have in the below given
 
 💡**Problem Statement**
 
+- Count the rows in each data file
 - Find list of Airports operating in the Country India
 -	Find the list of Airlines having zero stops
 -	List of Airlines operating with code share
