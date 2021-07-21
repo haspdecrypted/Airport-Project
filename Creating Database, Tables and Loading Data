@@ -18,4 +18,4 @@ route_codeshare string,route_stops int,route_equip string) row format delimited 
 create table final_airlines (airlineID string,airline_name string, airline_alias string, airline_iata string, airline_icao string,callsign string,
 territory string, active string) row format delimited fields terminated by ',';
 
-load data local inpath "path pf your data file" into table table_name;
+load data local inpath "path of your data file" into table table_name;
