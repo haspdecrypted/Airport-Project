@@ -88,3 +88,285 @@ Total MapReduce CPU Time Spent: 4 seconds 230 msec
 OK
 67663
 Time taken: 57.062 seconds, Fetched: 1 row(s)
+
+a) Find list of Airports operating in the Country India
+
+*command*
+
+>>create table india_opert_airport as  select * from airports where airport_country LIKE '%India%';
+>>select * from india_opert_airport limit 10;
+
+*output*
+
+895     Diego Garcia Nsf        Diego Garcia Island     British Indian Ocean Territory          FJDG    -7.313267       72.411089       9.0     6.0     U       Indian/Chagos
+2994    Ahmedabad       Ahmedabad       India   AMD     VAAH    23.077242       72.63465        189.0   5.5     N       Asia/Calcutta
+2995    Akola   Akola   India   AKD     VAAK    20.699006       77.058628       999.0   5.5     N       Asia/Calcutta
+2996    Aurangabad      Aurangabad      India   IXU     VAAU    19.862728       75.398114       1911.0  5.5     N       Asia/Calcutta
+2997    Chhatrapati Shivaji Intl        Mumbai  India   BOM     VABB    19.088686       72.867919       37.0    5.5     N       Asia/Calcutta
+2998    Bilaspur        Bilaspur        India   PAB     VABI    21.9884 82.110983       899.0   5.5     N       Asia/Calcutta
+2999    Bhuj    Bhuj    India   BHJ     VABJ    23.287828       69.670147       268.0   5.5     N       Asia/Calcutta
+3000    Belgaum Belgaum India   IXG     VABM    15.859286       74.618292       2487.0  5.5     N       Asia/Calcutta
+3001    Vadodara        Baroda  India   BDQ     VABO    22.336164       73.226289       129.0   5.5     N       Asia/Calcutta
+3002    Bhopal  Bhopal  India   BHO     VABP    23.287467       77.337375       1719.0  5.5     N       Asia/Calcutta
+
+b) Find the list of Airlines having zero stops
+
+*command*
+
+>>create table stop as select * from route where route_stops LIKE '%0';
+>>select * from stop limit 10;
+
+*output*
+
+2B      410     AER     2965    KZN     2990            0       CR2
+2B      410     ASF     2966    KZN     2990            0       CR2
+2B      410     ASF     2966    MRV     2962            0       CR2
+2B      410     CEK     2968    KZN     2990            0       CR2
+2B      410     CEK     2968    OVB     4078            0       CR2
+2B      410     DME     4029    KZN     2990            0       CR2
+2B      410     DME     4029    NBC     6969            0       CR2
+2B      410     DME     4029    TGK     NULL            0       CR2
+2B      410     DME     4029    UUA     6160            0       CR2
+2B      410     EGO     6156    KGD     2952            0       CR2
+
+c) List of Airlines operating with code share
+
+*command*
+
+>>create table codeshare_1 as select * from routes where route_codeshare LIKE '%Y%';
+>>select * from codeshare_1 limit 10;
+
+*output*
+
+2P      897     GES     6011    MNL     2397    Y       0       320
+2P      897     MNL     2397    GES     6011    Y       0       320
+4M      3201    DFW     3670    EZE     3988    Y       0       777
+4M      3201    EZE     3988    DFW     3670    Y       0       777
+4M      3201    EZE     3988    JFK     3797    Y       0       777
+4M      3201    JFK     3797    EZE     3988    Y       0       777
+5N      503     ARH     4362    CSH     6110    Y       0       AN4
+5N      503     ARH     4362    MMK     2949    Y       0       AN4
+5N      503     ARH     4362    USK     4369    Y       0       AN4
+5N      503     CSH     6110    ARH     4362    Y       0       AN4
+
+e) Find the list of Active Airlines in United state
+
+*command*
+
+>>select *  from final_airlines where territory like '%United States%' AND active like '%Y%';
+
+*output*
+
+10      40-Mile Air     NULL    Q5      MLA     MILE-AIR        United States   Y
+22      Aloha Airlines  NULL    AQ      AAH     ALOHA   United States   Y
+24      American Airlines       NULL    AA      AAL     AMERICAN        United States   Y
+35      Allegiant Air   NULL    G4      AAY     ALLEGIANT       United States   Y
+109     Alaska Central Express  NULL    KO      AER     ACE AIR United States   Y
+149     Air Cargo Carriers      NULL    2Q      SNC     NIGHT CARGO     United States   Y
+210     Airlift International   NULL            AIR     AIRLIFT United States   Y
+281     America West Airlines   NULL    HP      AWE     CACTUS  United States   Y
+282     Air Wisconsin   NULL    ZW      AWI     AIR WISCONSIN   United States   Y
+287     Allegheny Commuter Airlines     NULL            ALO     ALLEGHENY       United States   Y
+295     Air Sunshine    NULL            RSI     AIR SUNSHINE    United States   Y
+315     ATA Airlines    NULL            AMT     AMTRAN  United States   Y
+397     Arrow Air       NULL    JW      APW     BIG A   United States   Y
+452     Atlantic Southeast Airlines     NULL    EV      ASQ     ACEY    United States   Y
+659     American Eagle Airlines NULL    MQ      EGF     EAGLE FLIGHT    United States   Y
+792     Access Air      NULL    ZA      CYD     CYCLONE United States   Y
+882     Air Florida     NULL    QH      FLZ     AIR FLORIDA     United States   Y
+928     Atlas Air       NULL    5Y      GTI     GIANT   United States   Y
+1316    AirTran Airways NULL    FL      TRS     CITRUS  United States   Y
+1442    Bemidji Airlines        NULL    CH      BMJ     BEMIDJI United States   Y
+1472    Bering Air      NULL    8E      BRG     BERING AIR      United States   Y
+1629    Cape Air        NULL    9K      KAP     CAIR    United States   Y
+1739    Chautauqua Airlines     NULL    RP      CHQ     CHAUTAUQUA      United States   Y
+1814    Coastal Air     NULL    DQ              U.S. Virgin Islands     United States   Y
+1821    Colgan Air      NULL    9L      CJC     COLGAN  United States   Y
+1828    Comair  NULL    OH      COM     COMAIR  United States   Y
+1843    CommutAir       NULL    C5      UCA     COMMUTAIR       United States   Y
+1860    Compass Airlines        NULL    CP      CPZ     Compass Rose    United States   Y
+1881    Continental Airlines    NULL    CO      COA     CONTINENTAL     United States   Y
+1883    Continental Express     NULL    CO              JETLINK United States   Y
+1884    Continental Micronesia  NULL    CS      CMI     AIR MIKE        United States   Y
+1931    Crown Airways   NULL            CRO     CROWN AIRWAYS   United States   Y
+2009    Delta Air Lines NULL    DL      DAL     DELTA   United States   Y
+2261    Evergreen International Airlines        NULL    EZ      EIA     EVERGREEN       United States   Y
+2293    Express One International       NULL    EO      LHN     LONGHORN        United States   Y
+2295    ExpressJet      NULL    XE      BTA     JET LINK        United States   Y
+2404    Florida West International Airways      NULL    RF      FWL     FLO WEST        United States   Y
+2454    Freedom Air     NULL    FP      FRE     FREEDOM United States   Y
+2456    Freedom Airlines        NULL            FRL     FREEDOM AIR     United States   Y
+2468    Frontier Airlines       NULL    F9      FFT     FRONTIER FLIGHT United States   Y
+2470    Frontier Flying Service NULL    2F      FTA     FRONTIER-AIR    United States   Y
+2577    GoJet Airlines  NULL    G7      GJS     GATEWAY United States   Y
+2607    Great Lakes Airlines    NULL    ZK      GLA     LAKES AIR       United States   Y
+2645    Gulfstream International Airlines       NULL            GFT     GULF FLIGHT     United States   Y
+2657    Hageland Aviation Services      NULL    H6      HAG     HAGELAND        United States   Y
+2688    Hawaiian Airlines       NULL    HA      HAL     HAWAIIAN        United States   Y
+2778    Horizon Air     Horizon Airlines        QX      QXE     HORIZON AIR     United States   Y
+2855    Indigo  NULL    I9      IBU     INDIGO BLUE     United States   Y
+2937    Island Airlines NULL    IS                      United States   Y
+3001    Jet Airways     NULL    QJ                      United States   Y
+3029    JetBlue Airways NULL    B6      JBU     JETBLUE United States   Y
+3123    Kenmore Air     NULL    M5      KEN     KENMORE United States   Y
+3466    Mesa Airlines   NULL    YV      ASH     AIR SHUTTLE     United States   Y
+3467    Mesaba Airlines NULL    XJ      MES     MESABA  United States   Y
+3494    Midway Airlines NULL    JI      MDW     MIDWAY  United States   Y
+3497    Midwest Airlines        NULL    YX      MEP             United States   Y
+3641    NetJets NULL    1I      EJA     EXECJET United States   Y
+3644    New England Airlines    NULL    EJ      NEA     NEW ENGLAND     United States   Y
+3731    Northwest Airlines      NULL    NW      NWA     NORTHWEST       United States   Y
+3781    Omni Air International  NULL    OY      OAE     OMNI-EXPRESS    United States   Y
+3860    Pacific Island Aviation NULL            PSA     PACIFIC ISLE    United States   Y
+3865    Pacific Wings   NULL    LW      NMI     TSUNAMI United States   Y
+3935    Peninsula Airways       NULL    KS      PEN     PENINSULA       United States   Y
+3969    Piedmont Airlines (1948-1989)   NULL    PI      PDT     PIEDMONT        United States   Y
+3976    Pinnacle Airlines       NULL    9E      FLG     FLAGSHIP        United States   Y
+4026    Potomac Air     NULL    BK      PDC     DISTRICT        United States   Y
+4187    Republic Airlines       NULL    RW      RPA     BRICKYARD       United States   Y
+4294    Ryan Air Services       NULL            RYA     RYAN AIR        United States   Y
+4295    Ryan International Airlines     NULL    RD      RYN     RYAN INTERNATIONAL      United States   Y
+4335    Seaborne Airlines       NULL    BB      SBS     SEABORNE        United States   Y
+4342    Scenic Airlines NULL            SCE     SCENIC  United States   Y
+4356    Sun Country Airlines    NULL    SY      SCX     SUN COUNTRY     United States   Y
+4370    Southeast Air   NULL            SEA     SOUTHEAST AIR   United States   Y
+4411    Skagway Air Service     NULL    N5      SGY     SKAGWAY AIR     United States   Y
+4547    Southwest Airlines      NULL    WN      SWA     SOUTHWEST       United States   Y
+4589    Skywalk Airlines        NULL    AL      SYX     SKYWAY-EX       United States   Y
+4687    Spirit Airlines NULL    NK      NKS     SPIRIT WINGS    United States   Y
+4738    SkyWest NULL    OO      SKW     SKYWEST United States   Y
+4804    Southern Airways        NULL            SOU     SOUTHERN EXPRESS        United States   Y
+4816    South Pacific Island Airways    NULL            SPI     SOUTH PACIFIC   United States   Y
+4822    Shuttle America NULL    S5      TCF     MERCURY United States   Y
+5160    Trans States Airlines   NULL    AX      LOF     WATERSKI        United States   Y
+5207    USA3000 Airlines        NULL    U5      GWY     GETAWAY United States   Y
+5209    United Airlines NULL    UA      UAL     UNITED  United States   Y
+5265    US Airways      NULL    US      USA     U S AIR United States   Y
+5268    US Helicopter   NULL            USH     US-HELI United States   Y
+5279    United States Air Force NULL            AIO     AIR CHIEF       United States   Y
+5284    US Helicopter Corporation       NULL    UH                      United States   Y
+5331    Virgin America  NULL    VX      VRD     REDWOOD United States   Y
+5424    Western Airlines        NULL    WA      WAL     WESTERN United States   Y
+5465    World Airways   NULL    WO      WOA     WORLD   United States   Y
+8461    Carnival Air Lines              KW      NULL    Carnival Air    United States   Y
+8809    Island Air (WP)         WP      MKU             United States   Y
+9833    Epic Holiday    Epic Holidays   FA      4AA     Epic    United States   Y
+10123   Texas Wings             TQ      TXW     TXW     United States   Y
+10226   Atifly          A1      A1F     atifly  United States   Y
+10739   Air Choice One          3E      NULL            United States   Y
+10748   Locair          ZQ      LOC     LOCAIR  United States   Y
+10765   SeaPort Airlines                K5      SQH     SASQUATCH       United States   Y
+10776   Salmon Air              S6      NULL            United States   Y
+10912   Alaska Seaplane Service         J5      NULL            United States   Y
+12961   Gryphon Airlines                6P      NULL            United States   Y
+13391   U.S. Air                -+      --+             United States   Y
+13633   PanAm World Airways             WQ      PQW             United States   Y
+15887   CBM America                     XBM     AIRMAX  United States   Y
+15975   Black Stallion Airways          BZ      BSA     Stallion        United States   Y
+16135   Yellowstone Club Private Shuttle                Y1      NULL    YCS     United States   Y
+16264   Trans Pas Air           T6      TP6             United States   Y
+16625   Papillon Grand Canyon Helicopters               HI      NULL            United States   Y
+16702   Usa Sky Cargo   USky    E1      ES2     USKY    United States   Y
+16726   Era Alaska              7H      ERR     ERAH    United States   Y
+16735   Hankook Air US          H1      HA1             United States   Y
+16932   Orbit Airlines  Orbit           OBT     Orbit   United States   Y
+17519   SENIC AIRLINES          YR      NULL            United States   Y
+17563   XOJET                   XOJ             United States   Y
+17628   Orbit International Airlines                    OAI     OA      United States   Y
+17629   Orbit Regional Airlines                 OAR     OA      United States   Y
+17630   Orbit Atlantic Airways                  OAN             United States   Y
+17841   Aws express             B0      666     aws     United States   Y
+17859   Southjet                76      SJS             United States   Y
+17860   Southjet connect                77      ZCS             United States   Y
+17862   Southjet cargo          78      XAN             United States   Y
+18169   Patriot Airways         P4      NULL            United States   Y
+18178   Vision Airlines (V2)            V2      RBY     RUBY    United States   Y
+18239   Yellowtail              YE      YEL             United States   Y
+18241   Royal Airways   Royal Inc.      KG      RAW     RAW     United States   Y
+18257   Executive AirShare                      XSR             United States   Y
+18529   T.J. Air                TJ      TJA     T.J. Air        United States   Y
+18930   Maryland Air    Maryland        M1      M1F     Maryland Flight United States   Y
+19016   Apache Air      Apache  ZM      IWA     APACHE  United States   Y
+19287   National Air Cargo              N8      NCR             United States   Y
+19290   Eastern Atlantic Virtual Airlines               13      EAV     EAVA    United States   Y
+19350   Comfort Express Virtual Charters Albany                 EVC     Comfort Express United States   Y
+19351   Comfort Express Virtual Charters                        CEO             United States   Y
+19433   XAIR USA                XA      XAU     XAIR    United States   Y
+19619   Envoy Air                       ENY     Envoy   United States   Y
+19674   Rainbow Air (RAI)       Rainbow Air (RAI)       RN      RAB     Rainbow United States   Y
+19676   Rainbow Air Polynesia   Rainbow Air POL RX      RPO     Rainbow Air     United States   Y
+19678   Rainbow Air US  Rainbow Air US  RM      RNY     Rainbow Air     United States   Y
+19774   Spike Airlines  Aero Spike      S0      SAL     Spike Air       United States   Y
+19804   All America     All America     A2      AL2             United States   Y
+
+*Problem Statements**
+
+a) find top 10 countries with highest number of airports.
+
+*command*
+
+>>select airport_country,count(*) as cnt from airports group by airport_country ORDER BY cnt DESC limit 10;
+
+*output*
+
+United States   1697
+Canada  435
+Germany 321
+Australia       263
+Russia  249
+France  233
+China   219
+Brazil  213
+United Kingdom  209
+India   140
+
+b) find the airport at the highest altitude.
+
+*command*
+
+>>select * from airports where airport_alt in(select max(airport_alt) as MAX from airports);
+
+*output*
+
+9310	Yading Daocheng	Daocheng	China	DCY	ZUDC	29.3231	100.0533	14472.0	8.0	N	Asia/Chongqing
+
+c) find the highest altitude in india
+
+*command*
+
+>>select * from airports as a where upper(a.country) = 'India' and a.alt in(select max(a.alt) as MAX from airport as b where upper(b.country)='India');
+
+*output*
+
+3104	Leh	Leh	India	IXL	VILH	34.135872	77.546514	10682.0	5.5	N	Asia/Calcutta
+
+d) find number of airports both in east and west zone.
+
+*command*
+
+*For East Zone*
+
+>>create table East_zone as select airport_timezone from airports where airport_timezone>0;
+>>select count(1) from East_zone;
+
+*output*
+
+4427
+
+*For West Zone*
+
+>>create table West_zone as select airport_timezone from airports where airport_timezone<0;
+>>select count(1) from West_zone;
+
+*output*
+
+3279
+
+*For Neutral Zone*
+
+>>create table Neutral_zone as select airport_timezone from airports where airport_timezone=0;
+>>select count(1) from West_zone;
+
+*output*
+
+401
